@@ -4,3 +4,5 @@ __pycache__/
 exp/
 .vscode/
 .DS_Store
+wandb
+exp
