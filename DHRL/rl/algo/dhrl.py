@@ -7,6 +7,7 @@ from rl.algo.graph import GraphPlanner
 import gymnasium as gym
 from gymnasium_evaluator import MazeEvaluator, AgentAPI
 import wandb
+from pprint import pprint
 
 
 class Agent_DHRL(AgentAPI):
@@ -79,6 +80,7 @@ class Algo(BaseAlgo):
         config = vars(args)
         config["algo"] = {"name": args.algo_name}
         config["task"] = {"eval_task_name": args.test_env_name}
+        pprint(config)
         self.agent_api = Agent_DHRL(self)
         wandb.init(
             project=args.project,
