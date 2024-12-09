@@ -1,4 +1,5 @@
 SEED=$1
+GROUP=$2
 GPU=0
 
 
@@ -19,5 +20,9 @@ python DHRL/main.py \
 --subgoal_noise_eps 1 \
 --cuda_num ${GPU} \
 --seed ${SEED} \
---n_epochs 100 \
+--n_epochs 100 \ 
 --n_cycles 15 \
+--group $GROUP 
+
+# epoch * max_ep_steps * cycles = total train timesteps
+#100*200*15 = 300_000 steps

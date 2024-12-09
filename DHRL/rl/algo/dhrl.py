@@ -85,6 +85,7 @@ class Algo(BaseAlgo):
             config=config,
             entity=args.entity,
             mode=args.mode,
+            group=args.group,
         )
 
     def get_actions(

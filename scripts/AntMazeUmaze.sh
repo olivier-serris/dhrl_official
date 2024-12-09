@@ -1,4 +1,5 @@
 SEED=$1
+GROUP=$2
 GPU=0
 
 
@@ -21,3 +22,7 @@ python DHRL/main.py \
 --seed ${SEED} \
 --n_epochs 46 \
 --n_cycles 15 \
+--group $GROUP 
+
+# epoch * max_ep_steps * cycles = total train timesteps
+#96*700*15=1_008_000 steps

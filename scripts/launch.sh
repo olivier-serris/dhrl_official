@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1 # reserver 1 taches (ou processus)
 ##SBATCH --array=0-5 # pour avoir 5 fois la meme exp (differentes seed)
 #SBATCH --gres=gpu:1 # reserver 1 GPU 
-#SBATCH --cpus-per-task=1 # reserver 10 CPU par tache (et memoire associee)
+#SBATCH --cpus-per-task=10 # reserver 10 CPU par tache (et memoire associee)
 #SBATCH --time=07:30:00 # temps maximal d’allocation "(HH:MM:SS)"
 #SBATCH --hint=nomultithread         # hyperthreading desactive
 
@@ -21,11 +21,16 @@ conda activate dhrl_gymnasium
 
 set -x # activer l’echo des commandes
 
+# Check if SLURM_ARRAY_TASK_ID is unset or empty, and set it to 0 if so
+: "${SLURM_ARRAY_TASK_ID:=0}"
+
+GROUP="g0"
+
 echo "START"
-./scripts/PointMazeUmaze.sh ${SLURM_ARRAY_TASK_ID}
-# ./scripts/DubinUmaze.sh ${SLURM_ARRAY_TASK_ID}
-# ./scripts/Dubin3Umaze.sh ${SLURM_ARRAY_TASK_ID}
-# ./scripts/AntMazeUmaze.sh ${SLURM_ARRAY_TASK_ID}
+./scripts/PointMazeUmaze.sh ${SLURM_ARRAY_TASK_ID} $GROUP
+# ./scripts/DubinUmaze.sh ${SLURM_ARRAY_TASK_ID} $GROUP
+# ./scripts/Dubin3Umaze.sh ${SLURM_ARRAY_TASK_ID} $GROUP
+# ./scripts/AntMazeUmaze.sh ${SLURM_ARRAY_TASK_ID} $GROUP
 echo "FINISHED"
 
 

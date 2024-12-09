@@ -102,6 +102,7 @@ def get_args():
     parser.add_argument("--project", type=str, default="MHRL-Article")
     parser.add_argument("--mode", type=str, default="offline")
     parser.add_argument("--algo_name", type=str, default="DHRL", help="the algo name")
+    parser.add_argument("--group", type=str, default="", help="group id for wandb")
 
     return parser.parse_args()
 
