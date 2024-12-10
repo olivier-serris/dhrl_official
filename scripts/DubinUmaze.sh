@@ -20,7 +20,7 @@ python DHRL/main.py \
 --subgoal_noise_eps 1 \
 --cuda_num ${GPU} \
 --seed ${SEED} \
---n_epochs 143 \ 
+--n_epochs 143 \
 --n_cycles 15 \
 --group $GROUP 
 
